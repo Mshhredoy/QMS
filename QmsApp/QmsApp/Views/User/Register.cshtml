@@ -1,0 +1,59 @@
+﻿@model QmsApp.Models.ViewModels.RegisterViewModel
+@using QmsApp.Models;
+
+@{
+    ViewBag.Title = "Register";
+}
+  
+    <div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box">
+                            <div class="widget-title">
+                                <span class="icon"><i class="icon-tasks"></i></span>
+                                <h5>User Register</h5>
+                                <div class="buttons"><a href="@Url.Action("CeateRole","User")" class="btn btn-mini btn-success"><i class="icon-cabinet"></i> Create Role</a></div>
+                            </div>
+						    <div class="widget-content">
+                               
+						       @using (Html.BeginForm("Register", "User"))
+						       { @Html.AntiForgeryToken()
+						           <div class="control-group span6">
+						               @Html.LabelFor(model => model.UserName)
+						               <div class="controls">
+						                   @Html.TextBoxFor(model => model.UserName)
+						                   @Html.ValidationMessageFor(model => model.UserName)
+						               </div>
+						           </div>
+						           <div class="control-group span6">
+						               @Html.LabelFor(model => model.Role)
+						               <div class="controls">
+						                   @Html.DropDownList("RoleId", null, "--Select--")
+						                   @Html.ValidationMessageFor(model => model.RoleId)
+						               </div>
+						           </div>
+						           <div class="control-group">
+						               @Html.LabelFor(model => model.Password)
+						               <div class="controls">
+						                   @Html.TextBoxFor(model => model.Password,new{@type="password"})
+						                   @Html.ValidationMessageFor(model => model.Password)
+						               </div>
+						           </div>
+						           <div class="control-group">
+						               @Html.LabelFor(model => model.ConfirmPassword)
+						               <div class="controls">
+						                   @Html.TextBoxFor(model => model.ConfirmPassword, new { @type = "password" })
+						                   @Html.ValidationMessageFor(model => model.ConfirmPassword)
+						               </div>
+						           </div>
+
+
+						           <div class="form-actions">
+						               <input type="submit" value="Register" class="btn btn-success">
+                                       @Html.ActionLink("Cancel","Index","User",null,new{@class="btn btn-danger"})
+						           </div>
+						       }
+						    </div>
+						</div>			
+					</div>
+				</div>
+   

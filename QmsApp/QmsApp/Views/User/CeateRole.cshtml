@@ -1,0 +1,70 @@
+﻿@model QmsApp.Models.ViewModels.RoleViewModel
+
+@{
+    ViewBag.Title = "Create Role";
+}
+
+
+
+@using (Html.BeginForm("CeateRole", "User", null, FormMethod.Post, new { @id = "createRoleForm" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="widget-box">
+                <div class="widget-title">
+                    <span class="icon"><i class="icon-tasks"></i></span>
+                    <h5>Create Role</h5>
+                    <div class="buttons"><a href="@Url.Action("Index","User")" class="btn btn-mini btn-success"><i class="icon-refresh"></i> Users</a></div>
+                </div>
+                <div class="widget-content">
+
+
+                    <div class="control-group span6">
+                        @Html.LabelFor(model => model.RoleName)
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.RoleName,new{@placeholder="Role Name"})
+                            @Html.ValidationMessageFor(model => model.RoleName)
+                        </div>
+                    </div>
+
+                    <div class="control-group span6">
+                        <label class="control-label">Tasks</label>
+                        <div class="controls">
+                            @if (Model.RoleTaskCheckBoxList.Count > 0)
+                            {
+                                int i = 0;
+                                foreach (var item in Model.RoleTaskCheckBoxList)
+                                {
+                                    <label>
+                                        @Html.HiddenFor(model => model.RoleTaskCheckBoxList[i].TaskName)
+                                        @Html.CheckBoxFor(model => model.RoleTaskCheckBoxList[i].IsChecked) @item.TaskNameDisplay
+                                    </label>
+                                   
+                                    i++;
+                                }
+
+                            }
+                         
+                        </div>
+                    </div>
+
+
+                    <div class="form-actions">
+                        <input type="submit" value="Save" class="btn btn-success">
+                        @Html.ActionLink("Cancel", "Roles", "User", null, new { @class = "btn btn-danger" })
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+  
+}

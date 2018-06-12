@@ -160,15 +160,26 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="CustomRoleProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Migrations\201806120546481_mig1.cs" />
+    <Compile Include="Migrations\201806120546481_mig1.Designer.cs">
+      <DependentUpon>201806120546481_mig1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\QmsDbContext.cs" />
+    <Compile Include="Models\AuditLog.cs" />
+    <Compile Include="Models\CompanyProfile.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\Counter.cs" />
     <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\ViewModel\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -317,7 +328,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -330,6 +340,18 @@
     <None Include="Project_Readme.html" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Shared\_SidebarPartial.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\CeateRole.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Roles.cshtml" />
+    <Content Include="Views\User\EditRole.cshtml" />
+    <Content Include="Views\User\EditUser.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806120546481_mig1.resx">
+      <DependentUpon>201806120546481_mig1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

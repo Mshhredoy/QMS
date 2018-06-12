@@ -1,0 +1,57 @@
+﻿@model QmsApp.Models.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>QMS</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/css/maruti-login.css" />
+</head>
+<body>
+    <div id="loginbox">
+        @using (Html.BeginForm("Login", "User", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true)
+            <div class="control-group normal_text"> <h3><img src="/img/logo.png" alt="Logo" /></h3></div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on"><i class="icon-user"></i></span>@Html.TextBoxFor(m => m.UserName,new{@placeholder="User Name"})
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on"><i class="icon-lock"></i></span>@Html.PasswordFor(m => m.Password,new{@placeholder="Password",@type="password"})
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+
+                <span class="pull-right"><input type="submit" class="btn btn-success" value="Login" /></span>
+            </div>
+
+
+
+        }
+    </div>
+
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/maruti.login.js"></script>
+</body>
+
+</html>
+
