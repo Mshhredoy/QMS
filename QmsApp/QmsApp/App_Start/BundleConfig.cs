@@ -41,7 +41,8 @@ namespace QmsApp
         "~/js/excanvas.min.js",
           "~/js/jquery.peity.min.js"));
 
-
+            bundles.Add(new ScriptBundle("~/bundles/tables").Include("~/js/maruti.tables.js"));
+            bundles.Add(new ScriptBundle("~/bundles/interface").Include("~/js/jquery.gritter.min.js"));
         }
     }
 }

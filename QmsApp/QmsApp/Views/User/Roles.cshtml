@@ -1,0 +1,64 @@
+﻿@model IEnumerable<QmsApp.Models.Role>
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+
+
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"><i class="icon-tasks"></i></span>
+                <h5>Role List</h5>
+                <div class="buttons"><a href="@Url.Action("CeateRole","User")" class="btn btn-mini btn-success"><i class="icon-plus"></i> Create Role</a> <a href="@Url.Action("Index","User")" class="btn btn-mini btn-success"><i class="icon-list"></i> User</a></div>
+            </div>
+            <div class="widget-content nopadding">
+                <table class="table table-bordered data-table">
+                    <thead>
+                        <tr>
+                            <th>#SL</th>
+                            <th>Name</th>
+                            <th>Tasks</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int sn = 1;
+                        }
+                        @foreach (var role in Model)
+                        {
+                            <tr>
+                                <td>@sn</td>
+                                <td>@Html.DisplayFor(m => role.RoleName)</td>
+                                <td>
+                                    @foreach (var i in role.RoleTasks)
+                                    {
+                                        <span class='badge'>@i.Task</span>
+                                    }
+                                </td>
+                                <td><a class="btn btn-mini btn-info" href="@Url.Action("EditRole","User",new{id= role.RoleId})"><i class="icon-edit"></i> Edit</a></td>
+                        </tr>
+                                    sn++;
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/tables")
+
+}
+
+
+
+
