@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace QmsApp.Models
 {
@@ -16,8 +17,10 @@ namespace QmsApp.Models
         [DisplayName("Service Name")]
         public string ServiceName { get; set; }
 
-        [DisplayName("Possible Service Time")]
-        public TimeSpan? PossibleServiceTime { get; set; }
+        [DisplayName("Possible Service Time(Min)")]
+        public int? PossibleServiceTime { get; set; }
+        [AllowHtml]
+        public string Details { get; set; }
         public int? Status { get; set; }
         public int? CreateBy { get; set; }
         [ForeignKey("CreateBy")]

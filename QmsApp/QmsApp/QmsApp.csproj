@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="CustomRoleProvider.cs" />
     <Compile Include="Global.asax.cs">
@@ -167,6 +168,18 @@
     <Compile Include="Migrations\201806120546481_mig1.cs" />
     <Compile Include="Migrations\201806120546481_mig1.Designer.cs">
       <DependentUpon>201806120546481_mig1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806130545592_mig2.cs" />
+    <Compile Include="Migrations\201806130545592_mig2.Designer.cs">
+      <DependentUpon>201806130545592_mig2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806130607464_mig3.cs" />
+    <Compile Include="Migrations\201806130607464_mig3.Designer.cs">
+      <DependentUpon>201806130607464_mig3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806130608179_mig4.cs" />
+    <Compile Include="Migrations\201806130608179_mig4.Designer.cs">
+      <DependentUpon>201806130608179_mig4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -347,10 +360,22 @@
     <Content Include="Views\User\Roles.cshtml" />
     <Content Include="Views\User\EditRole.cshtml" />
     <Content Include="Views\User\EditUser.cshtml" />
+    <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Service\Create.cshtml" />
+    <Content Include="Views\Service\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806120546481_mig1.resx">
       <DependentUpon>201806120546481_mig1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806130545592_mig2.resx">
+      <DependentUpon>201806130545592_mig2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806130607464_mig3.resx">
+      <DependentUpon>201806130607464_mig3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806130608179_mig4.resx">
+      <DependentUpon>201806130608179_mig4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

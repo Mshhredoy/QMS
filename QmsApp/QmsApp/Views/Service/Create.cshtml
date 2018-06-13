@@ -1,0 +1,51 @@
+﻿@model QmsApp.Models.Service
+@using QmsApp.Models;
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"><i class="icon-tasks"></i></span>
+                <h5>Service Create</h5>
+                <div class="buttons"><a href="@Url.Action("Index","Service")" class="btn btn-mini btn-success"><i class="icon-list"></i> Service List</a></div>
+            </div>
+            <div class="widget-content">
+
+                @using (Html.BeginForm("Create", "Service"))
+                {
+                     @Html.AntiForgeryToken()
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.ServiceName)
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.ServiceName)
+                            @Html.ValidationMessageFor(model => model.ServiceName)
+                        </div>
+                    </div>
+                  
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.PossibleServiceTime)
+                        <div class="controls">
+                            @Html.TextBoxFor(model => model.PossibleServiceTime, new { @type="number" })
+                            @Html.ValidationMessageFor(model => model.PossibleServiceTime)
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        @Html.LabelFor(model => model.Details)
+                        <div class="controls">
+                            @Html.TextAreaFor(model => model.Details)
+                            @Html.ValidationMessageFor(model => model.Details)
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <input type="submit" value="Save" class="btn btn-success">
+                        @Html.ActionLink("Cancel", "Index", "Service", null, new { @class = "btn btn-danger" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

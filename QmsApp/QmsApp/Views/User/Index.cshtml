@@ -19,10 +19,12 @@
                     <table class="table table-bordered data-table">
                         <thead>
                             <tr>
-                                <th>#SL</th>
-                                <th>User Name</th>
-                                <th>Role</th>
-                                <th>Action</th>
+                                <th>@Html.Label("#SL") </th>
+                                <th>
+                                    @Html.LabelFor(model=>model.FirstOrDefault().UserName)
+                                </th>
+                                <th>@Html.LabelFor(model => model.FirstOrDefault().Role)</th>
+                                <th>@Html.Label("Action")</th>
                                
                             </tr>
                         </thead>

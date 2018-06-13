@@ -25,7 +25,7 @@ namespace QmsApp.Controllers
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
         // GET: /User/
-        [Roles("Global_SupAdmin,User_Creation")]
+        [Roles("Global_SupAdmin,User_Setting")]
         public ActionResult Index()
         {
             var users = db.Users.Where(x => x.Status != 2).OrderBy(x => x.UserName).ToList();
@@ -118,7 +118,7 @@ namespace QmsApp.Controllers
         }
         #endregion
         #region user register area
-        [Roles("Global_SupAdmin,User_Creation")]
+        [Roles("Global_SupAdmin,User_Setting")]
         public ActionResult Register()
         {
             ViewBag.Message = "";
@@ -265,7 +265,7 @@ namespace QmsApp.Controllers
 
 
 
-        [Roles("Global_SupAdmin,User_Creation")]
+        [Roles("Global_SupAdmin,User_Setting")]
 
         public ActionResult EditUser(int id)
         {
@@ -342,7 +342,7 @@ namespace QmsApp.Controllers
             db.SaveChanges(User.Identity.GetUserName().Split('|')[0]);
             return Json(new { Result = "OK" });
         }
-        [Roles("Global_SupAdmin,User_Creation")]
+        [Roles("Global_SupAdmin,User_Setting")]
         public ActionResult DeactiveActiveUser(int? id, byte? status)
         {
             if (id == null)
@@ -363,13 +363,13 @@ namespace QmsApp.Controllers
         #endregion
         #region custom user roles area
         //user defined roles =======================================
-       [Roles("Global_SupAdmin,Role_Creation")]
+       [Roles("Global_SupAdmin,User_Setting")]
         public ActionResult Roles()
         {
            
             return View(db.Roles.Where(x=>x.Status!=2).ToList());
         }
-       [Roles("Global_SupAdmin,Role_Creation")]
+       [Roles("Global_SupAdmin,User_Setting")]
         public ActionResult CeateRole()
         {
             var model = new RoleViewModel();
@@ -412,7 +412,7 @@ namespace QmsApp.Controllers
             
             return View(model);
         }
-        [Roles("Global_SupAdmin,Role_Creation")]
+        [Roles("Global_SupAdmin,User_Setting")]
         public ActionResult EditRole(int? id)
         {
             if (id == null)
