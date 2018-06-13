@@ -6,9 +6,9 @@
        
          @if (User.IsInRole("Global_SupAdmin") || User.IsInRole("Service_Setting"))
         {
-          <li><a href="@Url.Action("Dashboard","Home")"><i class="icon icon-fullscreen"></i> <span>Service</span></a> </li>  
+          <li><a href="@Url.Action("Index","Service")"><i class="icon icon-fullscreen"></i> <span>Service</span></a> </li>  
         } 
-          @if (User.IsInRole("Global_SupAdmin") || User.IsInRole("Counter_Setting"))
+         @if (User.IsInRole("Global_SupAdmin") || User.IsInRole("Counter_Setting"))
         {
           <li><a href="@Url.Action("Dashboard","Home")"><i class="icon icon-inbox"></i> <span>Counter</span></a> </li>  
         } 

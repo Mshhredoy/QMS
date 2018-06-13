@@ -1,0 +1,83 @@
+﻿@model IEnumerable<QmsApp.Models.Service>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="widget-box">
+            <div class="widget-title">
+                <span class="icon"><i class="icon-tasks"></i></span>
+                <h5>Service List</h5>
+                <div class="buttons"><a href="@Url.Action("Create","Service")" class="btn btn-mini btn-success"><i class="icon-plus"></i> New Service</a> </div>
+            </div>
+            <div class="widget-content nopadding">
+                <table class="table table-bordered data-table">
+                    <thead>
+                        <tr>
+                            <th>@Html.Label("#SL")</th>
+                            <th>@Html.LabelFor(model=>model.FirstOrDefault().ServiceName)</th>
+                            <th>@Html.LabelFor(model=>model.FirstOrDefault().PossibleServiceTime)</th>  
+                            <th>@Html.LabelFor(model=>model.FirstOrDefault().Status)</th>
+                            <th>@Html.LabelFor(model=>model.FirstOrDefault().Details)</th>
+                            <th>@Html.Label("Action")</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int sn = 1;
+                        }
+                        @foreach (var service in Model)
+                        {
+                            <tr>
+                                <td>@sn</td>
+                                <td>@Html.DisplayFor(m => service.ServiceName)</td>
+                                <td>@Html.DisplayFor(m => service.PossibleServiceTime)</td> 
+                                @if (service.Status == 1)
+                                {
+                                    <td>Enable</td>
+                                }
+                                else
+                                {
+                                    <td>Disable</td>
+                                }
+                                
+                                <td>@Html.DisplayFor(m => service.Details)</td>
+                                <td>
+                                    
+                                    @if (service.Status == 1)
+                                    {
+                                        <a class="btn btn-mini btn-info" href="@Url.Action("Edit","Service",new{id= service.ServiceId})"><i class="icon-edit"></i> Edit</a> 
+                                    <a class="btn btn-mini btn-info" onclick="confirm('Want to change status?')" href="@Url.Action("StatusChange","Service",new{id= service.ServiceId,status=0})"><i class="icon-edit"></i> Disable</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-mini btn-info" onclick="confirm('Want to change status?')" href="@Url.Action("StatusChange", "Service", new { id = service.ServiceId, status = 1})"><i class="icon-edit"></i> Enable</a>
+                                    }
+                                </td>
+                            </tr>
+                            sn++;
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/tables")
+
+
+}
+
+
+
+
